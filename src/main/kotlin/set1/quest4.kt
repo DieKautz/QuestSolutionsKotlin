@@ -10,7 +10,7 @@ fun main() {
     val questAccount = server.accounts().account(questAccountKeys.accountId)
 
     // acc used for other key, must be created!
-    val multisigAccKeys = KeyPair.fromSecretSeed(Keys.quest1MultisigKey)
+    val multisigAccKeys = KeyPair.fromSecretSeed(Keys.set1helperKey)
 
     val txBuilder = Transaction.Builder(questAccount, Network.TESTNET)
         .setBaseFee(FeeBumpTransaction.MIN_BASE_FEE)
