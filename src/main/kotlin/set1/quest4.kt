@@ -31,6 +31,7 @@ fun main() {
         val response = server.submitTransaction(addMultisigTx)
         println("Success!")
         println("txHash: ${response.hash}")
+        println("result: ${response.resultXdr.get()}")
     } catch (e: Exception) {
         println("Something went wrong!")
         println(e.message)

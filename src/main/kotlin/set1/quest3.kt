@@ -23,6 +23,7 @@ fun main() {
         val response = server.submitTransaction(transaction)
         println("Success!")
         println("txHash: ${response.hash}")
+        println("result: ${response.resultXdr.get()}")
     } catch (e: Exception) {
         println("Something went wrong!")
         println(e.message)
