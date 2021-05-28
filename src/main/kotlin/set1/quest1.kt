@@ -6,7 +6,7 @@ import org.stellar.sdk.*
 
 fun main() {
     val server = Server("https://horizon-testnet.stellar.org")
-    val questAccount = KeyPair.fromSecretSeed(Keys.quest1PrivateKey)
+    val questAccountKeys = KeyPair.fromSecretSeed(Keys.quest1PrivateKey)
 
     // Need helper account to create with exactly 1000XLM
     val creatorAccountKeys = KeyPair.random()
@@ -19,13 +19,11 @@ fun main() {
         .setTimeout(180)
 
     txBuilder.addOperation(
-        CreateAccountOperation.Builder(questAccount.accountId, "1000").build()
+        CreateAccountOperation.Builder(questAccountKeys.accountId, "1000").build()
     )
 
     val transaction = txBuilder.build()
     transaction.sign(creatorAccountKeys)
-
-
     println("Executing tx..")
     try {
         val response = server.submitTransaction(transaction)
