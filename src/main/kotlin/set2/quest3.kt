@@ -11,7 +11,6 @@ fun main() {
     val helperAccountKeys = KeyPair.fromSecretSeed(Keys.set2helperKey)
     val helperAccount = server.accounts().account(helperAccountKeys.accountId)
 
-    // use helper acc to pay for tx
     val txBuilder = Transaction.Builder(questAccount, Network.TESTNET)
         .setBaseFee(FeeBumpTransaction.MIN_BASE_FEE)
         .setTimeout(180)
