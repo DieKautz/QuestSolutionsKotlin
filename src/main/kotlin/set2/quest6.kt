@@ -8,9 +8,6 @@ fun main() {
     val questAccountKeys = KeyPair.fromSecretSeed(Keys.quest2PrivateKey)
     val questAccount = server.accounts().account(questAccountKeys.accountId)
 
-    val helperAccountKeys = KeyPair.fromSecretSeed(Keys.set2helperKey)
-    val helperAccount = server.accounts().account(helperAccountKeys.accountId)
-
     val txBuilder = Transaction.Builder(questAccount, Network.TESTNET)
         .setBaseFee(FeeBumpTransaction.MIN_BASE_FEE)
         .setTimeout(180)
