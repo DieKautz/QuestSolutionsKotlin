@@ -61,6 +61,7 @@ fun main() {
     }
 
     // OPTIONAL: remove multisig to not have to deal with it later on
+    // (Will not verify for quest completed, if done)
     removeMultisig(questAccount, multisigAccKeys, questAccountKeys, server)
 }
 
