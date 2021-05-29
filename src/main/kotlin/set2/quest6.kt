@@ -8,25 +8,25 @@ fun main() {
     val questAccountKeys = KeyPair.fromSecretSeed(Keys.quest2PrivateKey)
     val questAccount = server.accounts().account(questAccountKeys.accountId)
 
+    val accountToSponsorKeys = KeyPair.fromSecretSeed(Keys.s2q6SponsoredKey)
+
     val txBuilder = Transaction.Builder(questAccount, Network.TESTNET)
         .setBaseFee(FeeBumpTransaction.MIN_BASE_FEE)
         .setTimeout(180)
 
-    val accountToSponsor = KeyPair.random()
-
     txBuilder.addOperation(
-        BeginSponsoringFutureReservesOperation.Builder(accountToSponsor.accountId).build()
+        BeginSponsoringFutureReservesOperation.Builder(accountToSponsorKeys.accountId).build()
     )
     txBuilder.addOperation(
-        CreateAccountOperation.Builder(accountToSponsor.accountId, "0").build()
+        CreateAccountOperation.Builder(accountToSponsorKeys.accountId, "0").build()
     )
     txBuilder.addOperation(
-        EndSponsoringFutureReservesOperation(accountToSponsor.accountId)
+        EndSponsoringFutureReservesOperation(accountToSponsorKeys.accountId)
     )
 
     val transaction = txBuilder.build()
     transaction.sign(questAccountKeys)
-    transaction.sign(accountToSponsor)
+    transaction.sign(accountToSponsorKeys)
     println("Executing tx..")
     try {
         val response = server.submitTransaction(transaction)
