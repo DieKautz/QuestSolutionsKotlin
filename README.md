@@ -109,6 +109,10 @@ In today's challenge your task is to create, host and link to a stellar.toml fil
 Note you won't be able to solve today's challenge
 using only the laboratory. You'll need to host a toml file and for that you'll need a basic server. Personally I love [RunKit](https://runkit.com) and [CodeSandbox](https://codesandbox.io) but feel free to use whatever works. Good luck!
 
+---
+
+## Foundation Set 3
+
 ### [Quest 1:](src/main/kotlin/set3/quest1.kt) Make use of a sequence number bump operation in a transaction
 Welcome to Stellar Quest series 3! In today's inaugural challenge you must submit a transaction from your account, making use of the sequence number bump operation.
 
