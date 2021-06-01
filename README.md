@@ -109,3 +109,80 @@ In today's challenge your task is to create, host and link to a stellar.toml fil
 
 Note you won't be able to solve today's challenge
 using only the laboratory. You'll need to host a toml file and for that you'll need a basic server. Personally I love [RunKit](https://runkit.com) and [CodeSandbox](https://codesandbox.io) but feel free to use whatever works. Good luck!
+
+### [Quest 1:](src/main/kotlin/set3/quest1.kt) Make use of a sequence number bump operation in a transaction
+Welcome to Stellar Quest series 3! In today's inaugural challenge you must submit a transaction from your account, making use of the sequence number bump operation.
+
+What good is the sequence number bump operation you ask? While it may not be a heavily utilized operation within an account's lifecycle it's an incredibly useful op when dealing with smart contracts, particularly around pre-signed transactions.
+
+Imagine a scenario where you have two potential outcomes but only one of them should actually execute. Rather than having both transactions compete for the same sequence number you can control the outcome by bumping the sequence number to support whichever of the two scenarios you wish.
+
+With functionality like this you can now block transaction submission both by time and by sequence. Control all the things!
+
+⚠ This quest isn't as simple at seems. We're just as much about coding as we are about gaming and riddles here at the SQ HQ. Be sure and click all the provided links and peruse for clues on how to conquer this quest.
+
+### [Quest 2:](src/main/kotlin/set3/quest2.kt) Submit a transaction containing 100 operations
+Stellar, like all good software, has lots of different caps, limits, and ceilings. For instance the cap on the number of operations per transaction is 100 atm.
+
+Your challenge today is to successfully orchestrate and submit a transaction stuffed full of 100 operations.
+
+For the developers out there still clinging to the Laboratory, now might be a good time to flex your coding skills and utilize one of our SDKs inside a loop.
+
+### [Quest 3:](src/main/kotlin/set3/quest3.kt) Submit a hash signed transaction
+So you've heard about Stellar's multisig, but did you know that you can sign with far more than just a simple Ed25519 secret key? That's right! There's also sha256 hashes and pre-authorized transaction hashes.
+
+In today's challenge your task is to add a very specific and special sha256 hash signer to your account and then to submit a second transaction using that signer to remove itself as a signer from the account. A sort of one time use key if you will.
+
+Your clue for what your hash signer should be is included in the Resources links below.
+
+### [Quest 4:](src/main/kotlin/set3/quest4.kt) Submit a pre-authorized transaction
+So you probably saw this one coming considering the previous quest, but today's challenge is to add as a signer and then submit to the network, a pre-authorized transaction. The last of the signer types accepted for submitting transactions to the network.
+
+Pre-authorized transactions are a fantastic way to get around the somewhat cumbersome issue of multisig coordination. Just add a transaction hash as a signer to your account and then pass along that XDR to any other sig
+ners for additional signing or final submission.
+
+Simple, yet smart! A Simart Contract™! And just another great tool in your ever expanding tool belt of experience as a Stellar developer.
+
+### [Quest 5:](src/main/kotlin/set3/quest5.kt) Successfully submit a clawback operation
+Ask and ye shall receive. Today we conquer the asset clawback operation even as the steam wafts up from its freshly minted edifice.
+
+While currently a testnet only feature, the asset clawback operation will be a regulated asset issuer's excalibur of conquest in this brave new world of old → new finance.
+
+It's the Ctrl+Z for blockchain payments. The mechanic for undoing mistaken or fraudulent payments. Once an issuer and trustline have been created under the asset clawback umbrella the issuer has the power to "clawback" any amount of that asset back into the issuing account effectively burning it from existence.
+
+Arguably a controversial feature it's an absolute requirement for issuing regulated assets on the blockchain and ultimately it's issuer specific so effectively opt-in and obvious from a consumers perspective.
+
+### [Quest 6:](src/main/kotlin/set3/quest6.kt) Mint a Stellar Quest style NFT
+Today's challenge will be difficult so prepare yourself. Take breaks, deep breaths, walk away for awhile if you need to. Don't stress it, the rewards will be worth the effort.
+
+In reality minting an NFT is actually fairly straightforward, and while there are several variant methods we've used over the past few series we're going to explore the simplest.
+
+What you'll need to do is take the PNG image provided in the Resources list, snag its base64 encoded string and bake that into your account's () manageData fields utilizing both the key and value fields.
+
+So just methodically slice off bits of the base64 string and pack those into both the key and value slots of consecutive manageDate operations until you run out of string.
+
+An important gotcha caveat is to prefix the key with 2 characters of indexing data in order to ensure accurate reassembly of the base64 string later.
+
+### [Quest 7:](src/main/kotlin/set3/quest7.kt) Acquire and make use of a SEP-0010 JWT
+Outside of the relatively simple and controlled world of Stellar operations there's a whole universe of use cases and implementations. Even here though there is need for order and interoperability.
+
+These needs are met by Stellar Ecosystem Proposals or SEPs. SEPs are the Stellar wilderness guidebooks ensuring everyone is following the same path and rules and is thus able to interoperate with each other.
+
+`SEP-0010` is an authentication SEP outlining how to prove ownership of a Stellar account to a service. It is used in many other SEPs so it's an important foundational SEP to understand.
+
+Today's task will be to acquire a `SEP-0010` JWT and then embed that JWT back into your account's () manageData fields in identical fashion to how we embedded the NFT data in the previous quest.
+
+Please note that this embed step **is not** part of `SEP-0010` and is **definitely not** something you'd do in practice. I'm just including it here as a method for reading back and making use of the generated `SEP-0010` JWT as part of the verification step. It's also a good refresher for Quest 6.
+
+### [Quest 8:](src/main/kotlin/set3/quest8.kt) Use SEP-0006 to acquire some MULT from testanchor.stellar.org
+Now that we've got `SEP-0010` under our belt let's make use of it to make an automated testnet `SEP-0006` deposit to SDF's testanchor endpoint.
+
+Between `SEP-0006`, `SEP-0024` and `SEP-0031` we have all we need to connect Stellar with all the real world's "anchored" assets. `SEP-0006` is the API-only method for handling the flow so let's try that.
+
+Your task today will be to use `SEP-0006` to request a deposit of `MULT` issued by `GDLD...FSMM` from the [testanchor.stellar.org](https://testanchor.stellar.org) endpoint.
+
+This task will actually make use of `SEP-0010`, `SEP-0006` and `SEP-0012` so buckle up, read the docs, and enjoy the ride!
+
+Finally I'm sure you're noticing by now we've begun to drift away from the Laboratory harbor into the more adventurous waters of the greater world wide web.
+
+For Quests like this if you're uncomfortable whipping up some new code feel free to use `curl` or a tool like www.postman.com for constructing your non-Laboratory API calls.
