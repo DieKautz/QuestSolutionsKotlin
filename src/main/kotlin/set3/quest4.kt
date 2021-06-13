@@ -22,7 +22,6 @@ fun main() {
         )
         .build()
 
-    preAuthTx.sequenceNumber
     val txBuilder = Transaction.Builder(questAccount, Network.TESTNET)
         .setBaseFee(FeeBumpTransaction.MIN_BASE_FEE)
         .setTimeout(180)
