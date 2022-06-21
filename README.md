@@ -189,3 +189,9 @@ This task will actually make use of `SEP-0010`, `SEP-0006` and `SEP-0012` so buc
 Finally I'm sure you're noticing by now we've begun to drift away from the Laboratory harbor into the more adventurous waters of the greater world wide web.
 
 For Quests like this if you're uncomfortable whipping up some new code feel free to use `curl` or a tool like www.postman.com for constructing your non-Laboratory API calls.
+
+---
+
+## Set 4
+
+coming soon
